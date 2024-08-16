@@ -36,12 +36,6 @@ const _layout = () => {
 
 export default _layout
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})
-
 import { NativeWindStyleSheet } from "nativewind";
 
 NativeWindStyleSheet.setOutput({
