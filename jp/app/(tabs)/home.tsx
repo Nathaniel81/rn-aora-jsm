@@ -3,9 +3,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList, Image, RefreshControl, Text, View } from "react-native";
 
 import { images } from "../../constants";
+import { videos } from "@/constants/videos";
 
 import SearchInput from "@/components/SearchInput";
 import EmptyState from "@/components/EmptyState";
+import VideoCard from "@/components/VideoCard";
+import Trending from "@/components/Trending";
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -14,22 +17,23 @@ const Home = () => {
     setRefreshing(true);
     setRefreshing(false);
   };
-  const posts = [{}]
 
   return (
     <SafeAreaView className="bg-primary">
       <FlatList
-        data={[]}
+        data={videos}
         keyExtractor={(item) => Math.random().toString()}
         renderItem={({ item }) => (
-        //   <VideoCard
-        //     title={item.title}
-        //     thumbnail={item.thumbnail}
-        //     video={item.video}
-        //     creator={item.creator.username}
-        //     avatar={item.creator.avatar}
-        //   />
-		    <Text>{" "}</Text>
+          <>
+            <VideoCard
+              title={item.title}
+              thumbnail={item.thumbnail}
+              video={item.video}
+              creator={item.creator.username}
+              avatar={item.creator.avatar}
+            />
+          <Text>{" "}</Text>
+          </>
         )}
         ListHeaderComponent={() => (
           <View className="flex my-6 px-4 space-y-6">
@@ -59,6 +63,7 @@ const Home = () => {
                 Latest Videos
               </Text>
 
+              <Trending posts={videos ?? []} />
               
             </View>
           </View>
