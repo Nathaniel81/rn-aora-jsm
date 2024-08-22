@@ -1,1 +1,1 @@
-# rn-job-portal
+# rn-playground
